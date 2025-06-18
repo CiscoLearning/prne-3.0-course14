@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Network Device Console</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    #console { 
+      background: #000; 
+      color: #fff; 
+      padding: 20px; 
+      height: 400px; 
+      overflow-y: auto; 
+      font-family: monospace; 
+    }
+    .line { white-space: pre-wrap; }
+    #command-line { display: flex; align-items: center; margin-top: 10px; }
+    #command-line span { margin-right: 5px; }
+    #command-input { 
+      flex-grow: 1; 
+      background: transparent; 
+      border: none; 
+      color: #fff; 
+      outline: none; 
+      font-family: monospace; 
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Network Console</a>
+  </nav>
+  <div class="container mt-4">
+    <h1 class="mb-4">Network Device Console</h1>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <select id="device-select" class="form-control">
+          <option value="">Select a device</option>
+          {% for device in devices %}
+            <option value="{{ device }}">{{ device }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button id="connect-btn" class="btn btn-primary btn-block" onclick="toggleConnection()">Connect</button>
+      </div>
+    </div>
+    <div id="console" class="mb-3">
+      <div id="command-line" style="display: none;">
+        <span>&gt;</span>
+        <input id="command-input" type="text" placeholder="Enter command..." disabled class="form-control">
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

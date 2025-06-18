@@ -1,0 +1,3 @@
+Name,Management IP,Username,Password,Description
+R1,10.0.0.103,cisco,cisco,R1 Core router handling WAN access and internal traffic
+R2,10.0.0.104,cisco,cisco,R2 Core router handling WAN access and internal traffic
